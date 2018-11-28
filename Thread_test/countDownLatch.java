@@ -4,7 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  CountDownLatch用法demo 不可复用
- 
+
  */
 public class countDownLatch {
     public static void main(String[] args) throws InterruptedException {
@@ -40,6 +40,7 @@ public class countDownLatch {
 
 
         }.start();
+
         System.out.println("等待俩个线程执行完毕！！！");
         latch.await();
         System.out.println("继续执行主线程！！！");
