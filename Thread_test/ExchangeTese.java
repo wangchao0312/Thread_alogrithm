@@ -10,13 +10,12 @@ public class ExchangeTese {
     static class Producer implements Runnable{
 
         //生产者、消费者交换的数据结构
-        private List<String> buffer_receive;
+        private List<String> buffer_receive=new ArrayList<>();
         private List<String> buffer_send=new ArrayList<>();
         //步生产者和消费者的交换对象
         private Exchanger<List<String>> exchanger;
 
         Producer(List<String> buffer,Exchanger<List<String>> exchanger){
-            this.buffer_receive = buffer;
             this.exchanger = exchanger;
         }
 
@@ -43,8 +42,7 @@ public class ExchangeTese {
                 }
 
                 for (int j = 1; j <= 3 ; j++) {
-                    System.out.println("生产者从消费者获取的数据 : " + buffer_receive.get(0));
-                    buffer_receive.remove(0);
+                         buffer_receive.remove(0);
                 }
                 System.out.println("生产者获取数据完成！！");
                 System.out.println("");
@@ -54,12 +52,11 @@ public class ExchangeTese {
 
     static class Consumer implements Runnable {
         private List<String> buffer_send=new ArrayList<>();
-        private List<String> buffer_receive;
+        private List<String> buffer_receive=new ArrayList<>();
 
         private final Exchanger<List<String>> exchanger;
 
         public Consumer(List<String> buffer, Exchanger<List<String>> exchanger) {
-            this.buffer_receive = buffer;
             this.exchanger = exchanger;
         }
 
