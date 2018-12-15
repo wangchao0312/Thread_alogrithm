@@ -1,5 +1,9 @@
 package Sword;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Puke {
     public static boolean isContinuous(int [] numbers) {
         if(numbers.length==0)
@@ -38,7 +42,19 @@ public class Puke {
     }
 
     public static void main(String[] args){
-        int[] array={1,0,3,4,5};
-        System.out.println(isContinuous(array));
+      /*  int[] array={1,0,3,4,5};
+        System.out.println(isContinuous(array));*/
+        List<Integer> list=new LinkedList<>();
+        list.add(0);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.remove(2);
+
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
+        System.out.println(list.get(3));
     }
 }
