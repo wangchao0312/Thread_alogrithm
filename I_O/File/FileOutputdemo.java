@@ -4,7 +4,13 @@ import java.io.*;
 
 public class FileOutputdemo {
 
-    public static void copy(File fileFrom,File fileTo) throws IOException {
+    /**
+     * 字节数组拷贝文件
+     * @param fileFrom
+     * @param fileTo
+     * @throws IOException
+     */
+    public static void copyArray(File fileFrom,File fileTo) throws IOException {
         byte[] bytes=new byte[8*1024];
         FileOutputStream fileto=new FileOutputStream(fileTo);
         FileInputStream filefrom=new FileInputStream(fileFrom);
@@ -14,6 +20,41 @@ public class FileOutputdemo {
 
         fileto.close();
         filefrom.close();
+    }
+
+    /**
+     * 缓冲区拷贝文件
+     * @param from
+     * @param to
+     * @throws IOException
+     */
+    public static void copyBuffer(File from,File to) throws IOException {
+        BufferedInputStream in=new BufferedInputStream(new FileInputStream(from));
+        BufferedOutputStream out=new BufferedOutputStream(new FileOutputStream(to));
+        int c;
+        while(( c=in.read())!=-1)
+            out.write(c);
+
+        out.flush();
+
+        in.close();
+        out.close();
+    }
+
+    /**
+     * 单字节不带缓冲拷贝文件
+     * @param from
+     * @param to
+     * @throws IOException
+     */
+    public static void copyByte(File from,File to)throws IOException{
+        FileInputStream in=new FileInputStream(from);
+        FileOutputStream out=new FileOutputStream(to);
+        int c;
+        while((c=in.read())!=-1)
+            out.write(c);
+        in.close();;
+        out.close();
     }
 
 
@@ -32,8 +73,13 @@ public class FileOutputdemo {
         out.close();
 
         IOUtil.printHexByByteArray("E:\\alogrithm\\日记1.txt");*/
-        File from=new File("E:\\alogrithm\\日记1.txt");
-        File to=new File("E:\\alogrithm\\日记2.txt");
-        copy(from,to);
+        long start=System.currentTimeMillis();
+
+        File from=new File("E:\\alogrithm\\1.pdf");
+        File to=new File("E:\\alogrithm\\2.pdf");
+        copyBuffer(from,to);
+        long end=System.currentTimeMillis();
+        System.out.println(end-start);
+
     }
 }

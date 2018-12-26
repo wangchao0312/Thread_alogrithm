@@ -13,7 +13,7 @@ public class dosdemo {
         dos.writeInt(10);
         dos.writeLong(-10l);
         dos.writeDouble(12.3);
-        dos.writeUTF("王超");
+        dos.writeUTF("wangchao");
 
 
 
