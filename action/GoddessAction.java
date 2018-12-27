@@ -10,6 +10,10 @@ public class GoddessAction {
 
     public void add(Goddess goddess) throws SQLException {
         goddessDao dao=new goddessDao();
+        goddess.setSex(1);
+        goddess.setCreater_user("ADMIN");
+        goddess.setUpdate_user("ADMIN");
+        goddess.setIsdel(0);
         dao.addGoddess(goddess);
     }
     public void edit(Goddess goddess) throws SQLException {
